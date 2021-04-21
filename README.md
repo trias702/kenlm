@@ -4,6 +4,42 @@ Language model inference code by Kenneth Heafield (kenlm at kheafield.com)
 
 The website https://kheafield.com/code/kenlm/ has more documentation.  If you're a decoder developer, please download the latest version from there instead of copying from another decoder.
 
+## Compiling for Windows 10
+
+- Make sure you have TDM-GCC installed with Boost and OpenMP support, and that it is on your $PATH
+
+- Download Eigen 3.3.9 (https://eigen.tuxfamily.org/index.php?title=Main_Page), unzip it, then go into that directory which contains the INSTALL file and run the following:
+```
+mkdir build_dir
+cd build_dir
+cmake ..
+make install
+```
+
+- Download Boost for Windows 1.75 (https://www.boost.org/users/history/version_1_75_0.html), and extract the boost_1_75_0 directory somewhere, then create an env_var called BOOST_ROOT pointing to this path
+
+- Clone this repo
+
+- Do the following:
+```
+cd kenlm
+mkdir build
+cd build
+cmake .. -DCMAKE_GENERATOR_PLATFORM=x64
+```
+
+- Open up VC Tools x64 Command Prompt, cd kenlm/build, then run:
+```
+msbuild kenlm.sln /p:Configuration=Release /p:Platform=x64
+```
+
+After build is finished
+
+```
+move build/bin/Release/*.exe to kenlm/bin
+move build/lib/Release/*.lib to kenlm/lib
+```
+
 ## Compiling
 Use cmake, see [BUILDING](BUILDING) for build dependencies and more detail.
 ```bash

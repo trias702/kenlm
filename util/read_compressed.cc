@@ -4,6 +4,8 @@
 #include "have.hh"
 #include "scoped.hh"
 
+#define NOMINMAX
+
 #include <algorithm>
 #include <iostream>
 
