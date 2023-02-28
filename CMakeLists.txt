@@ -9,7 +9,7 @@ if (WIN32)
     # Several boost libraries headers aren't configured correctly if
     # USE_STATIC_LIBS is off, so we explicitly say they are dynamic with the
     # remaining definitions.
-    add_definitions(-DBOOST_ALL_NO_LIB -DBOOST_PROGRAM_OPTIONS_DYN_LINK -DBOOST_IOSTREAMS_DYN_LINK -DBOOST_THREAD_DYN_LINK)
+    add_definitions(-DBOOST_ALL_NO_LIB -DBOOST_PROGRAM_OPTIONS_DYN_LINK -DBOOST_IOSTREAMS_DYN_LINK -DBOOST_THREAD_DYN_LINK -D_USE_MATH_DEFINES)
 endif( )
 
 # Define a single cmake project
@@ -22,7 +22,7 @@ option(BUILD_PYTHON_STANDALONE "Build standalone C++ lib with Python install" OF
 # Eigen3 less than 3.1.0 has a race condition: http://eigen.tuxfamily.org/bz/show_bug.cgi?id=466
 find_package(Eigen3 3.1.0 CONFIG)
 include(CMakeDependentOption)
-cmake_dependent_option(ENABLE_INTERPOLATE "Build interpolation program (depends on Eigen3)" ON "EIGEN3_FOUND AND NOT WIN32" OFF)
+cmake_dependent_option(ENABLE_INTERPOLATE "Build interpolation program (depends on Eigen3)" ON "EIGEN3_FOUND AND NOT WIN32" ON)
 
 set(KENLM_MAX_ORDER 6 CACHE STRING "Maximum supported ngram order")
 

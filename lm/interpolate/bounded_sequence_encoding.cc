@@ -1,6 +1,10 @@
 #include "bounded_sequence_encoding.hh"
 
 #include <algorithm>
+#ifdef _MSC_VER
+#include <intrin.h>
+#define __builtin_clz(x) __lzcnt(x)
+#endif
 
 namespace lm { namespace interpolate {
 

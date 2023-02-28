@@ -36,6 +36,7 @@
 #include <boost/shared_ptr.hpp>
 #include <boost/unordered_map.hpp>
 
+#define _USE_MATH_DEFINES
 #include <cmath>
 #include <limits>
 #include <vector>
