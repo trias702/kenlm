@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.1)
 
-cmake_policy(SET CMP0074 NEW)
+#cmake_policy(SET CMP0074 NEW)
 
 if (WIN32)
     set(Boost_USE_STATIC_LIBS OFF)
